@@ -9,3 +9,5 @@
 ## [4. Colocando em prática](docs/04-colocando-em-pratica.md)
 
 ## [5. Otimizando imagens](docs/05-otimizando-imagens.md)
+
+## [6. Docker compose](docs/06-docker-compose.md)
