@@ -26,4 +26,13 @@ laravel  | 172.29.0.3 -  20/Jul/2024:05:29:17 +0000 "GET /index.php" 200
 $ docker-compose up -d --build
 ```
 
+### 03 - Criando banco de dados MySQL
+
+```sh
+$ docker-compose up -d
+[+] Running 2/2
+ ✔ Network 01-docker_node-network  Created                                                                                                                          0.0s
+ ✔ Container db_mysql_fullcycle    Started
+```
+
 [voltar](../README.md)
