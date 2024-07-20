@@ -20,4 +20,10 @@ nginx    | 172.29.0.1 - - [20/Jul/2024:05:29:17 +0000] "GET / HTTP/1.1" 200 1762
 laravel  | 172.29.0.3 -  20/Jul/2024:05:29:17 +0000 "GET /index.php" 200
 ```
 
+### 02 - Buildando images com docker-compose
+
+```sh
+$ docker-compose up -d --build
+```
+
 [voltar](../README.md)
