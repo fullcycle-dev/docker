@@ -1,6 +1,23 @@
-version: '3'
+version: '3.8'
 
 services:
+  app:
+    build:
+      context: ./node
+      dockerfile: Dockerfile.prod
+    container_name: app_node_fullcycle
+    networks:
+      - node-network
+    volumes:
+      - ./node:/usr/src/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      db:
+        condition: service_healthy
+    entrypoint: ['/bin/sh', '-c', 'npm install && npm start']
+    #entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+
   db:
     image: mysql:5.7
     command: --innodb-use-native-aio=0
@@ -13,9 +30,15 @@ services:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
     ports:
-      - '33067:3306'
+      - '3306:3306'
     networks:
       - node-network
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -hlocalhost -uroot -proot || exit 1']
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
 
 networks:
   node-network:
